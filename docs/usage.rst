@@ -301,6 +301,10 @@ complete list of available options is shown below::
         Internally, this value is passed directly to the ``$.not(...)`` method.
         This means you can also pass in DOM elements, or a function (in newer
         versions of jQuery) as your selector.
+        
+.. versionadded:: BLOODBUY
+   ``deleteParentSelector``
+      Set this to specify the parent of where you would like to place the deleteText.
 
 .. note:: The ``addCssClass`` and ``deleteCssClass`` options must be unique.
    Internally, the plugin uses the class names to target the add and delete
