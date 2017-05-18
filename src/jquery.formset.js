@@ -155,7 +155,7 @@
 
         if ($$.length) {
             var hideAddButton = !showAddButton(),
-                addButton;
+                addButton, template;
             if (options.formTemplate) {
                 // If a form template was specified, we'll clone it to generate new form instances:
                 template = (options.formTemplate instanceof $) ? options.formTemplate : $(options.formTemplate);
