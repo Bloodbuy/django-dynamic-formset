@@ -155,7 +155,7 @@
 
         if ($$.length) {
             var hideAddButton = !showAddButton(),
-                addButton, template;
+                addButton;
             if (options.formTemplate) {
                 // If a form template was specified, we'll clone it to generate new form instances:
                 template = (options.formTemplate instanceof $) ? options.formTemplate : $(options.formTemplate);
@@ -179,6 +179,13 @@
                     } else {
                         elem.val('');
                     }
+
+                    // Bloodbuy addition - 5/17
+                    // .val() properly updates the value of the select,
+                    // but since this action is not by a user, the 'selected' attr is not automatically dropped.
+                    if (elem.is('select')) {
+                        elem.children().removeAttr('selected');
+                    }
                 });
             }
             // FIXME: Perhaps using $.data would be a better idea?
@@ -200,6 +207,7 @@
                 } else {
                     // Otherwise, insert it immediately after the last form:
                     $$.filter(':last').after('<a class="' + options.addCssClass + '" href="javascript:void(0)">' + options.addText + '</a>');
+                    addButton = $$.filter(':last').next();
                     if (hideAddButton) addButton.hide();
                 }
             }
